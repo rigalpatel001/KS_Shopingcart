@@ -67,7 +67,7 @@ exports = module.exports = function (req, res) {
 					if (err) return next();
 						var onSuccess = function() {
 							req.flash('Success', 'Registration has been sccuessfully done..');	
-						    res.redirect('signin');
+						    res.redirect('/');
 					}
 					var onFail = function(e) {
 						req.flash('error', 'There was a problem signing you up, please try again');

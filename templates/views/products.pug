@@ -19,7 +19,7 @@ block content
 									h4.text-center
 									span.label.label-info= product.categories.name
 									if product.image.exists
-										a(href='/product/details/' + product.slug): img.img-responsiv(src=product._.image.fit(160,160))
+										a(href='/details/' + product.slug): img.img-responsiv(src=product._.image.fit(160,160))
 									.caption
 										.row
 											.col-md-6.col-xs-6
