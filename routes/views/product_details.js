@@ -10,7 +10,7 @@ exports = module.exports = function (req, res) {
 	// Init locals
 	locals.section = 'product Details';
 	locals.filters = {
-		product: req.params.product
+		product: req.params.slug
 	};
 	locals.data = {
 		products: [],
@@ -46,14 +46,13 @@ exports = module.exports = function (req, res) {
 
 	// Load the Products
 	view.on('init', function (next) {
-
+		
 		var q = keystone.list('Product').model.findOne({
-			slug: locals.filters.product
+			slug:locals.filters.product
 		});
 
 		q.exec(function(err, result) {
 			locals.data.product	 = result;
-			console.log(result);
 			next(err);
 		});
 	});
