@@ -14,6 +14,8 @@ html
 
 		//- Customise the stylesheet for your site by editing /public/styles/site.sass
 		link(href="/styles/site.css", rel="stylesheet")
+		link(href="/styles/style.css", rel="stylesheet")
+		link(href="https://fonts.googleapis.com/css?family=Slabo+27px", rel="stylesheet")
 
 		//- This file provides the default styling for the KeystoneJS Content Editor
 		if user && user.canAccessKeystone
@@ -49,19 +51,20 @@ html
 							span.icon-bar
 							span.icon-bar
 							span.icon-bar
-						a.navbar-brand(href='/') keystone_cart
+						a.navbar-brand(href='/'): img(src='/images/logo.svg')
 					.collapse.navbar-collapse
 						ul.nav.navbar-nav.navbar-left
-							//-each link in navLinks
-							//-	li  link.name
+							each link in navLinks
+								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
 						ul.nav.navbar-nav.navbar-right
+							li: a(href='/cart/viewcart')= `My Cart( ${typeof cart !== "undefined" ? cart.length : 0})`
 							if user
 								if user.canAccessKeystone
 									li: a(href='/keystone') Open Keystone
-								li: a(href='/keystone/signout') Sign Out
+								li: a(href='/signout')= `Hi, ${user.username} Sign Out`
 							else
-								li: a(href='/keystone/signin') Sign In
-
+								li: a(href='/signin') Sign In
+								li: a(href='/register') Register
 		//- BODY
 		#body
 
@@ -81,7 +84,7 @@ html
 
 
 		//- FOOTER
-		.container: #footer
+		.container-fluid: #footer
 
 			//- You don't _have_ to include a link saying your site is powered by KeystoneJS, but we appreciate it!
 			p Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.

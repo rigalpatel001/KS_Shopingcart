@@ -9,6 +9,7 @@
  */
 var keystone = require('keystone');
 var _ = require('lodash');
+var async = require('async');
 
 
 /**
@@ -19,17 +20,15 @@ var _ = require('lodash');
 	or replace it with your own templates / logic.
 */
 exports.initLocals = function (req, res, next) {
-	// res.locals.navLinks = [
-	// 	{ label: 'Home', key: 'home', href: '/' },
-	// 	{ label: 'Contact', key: 'contact', href: '/contact' },
-	// ];
-	// var q = keystone.list('Page').model.find().where('state', 'published');
-    //  q.exec(function (err, results) {
-	// 	res.locals.navLinks = results;
-	// 	next(err);
-	// });
-	locals.navigation = keystone.get('navigation');
+	
+	res.locals.navLinks = [
+					{ label: 'Home', key: 'home', href: '/' },
+					{ label: 'Contact', key: 'contact', href: '/contact' },
+					{ label: 'Products', key: 'products', href: '/products	' },
+	];
+	res.locals.cart = keystone.session.cart;			
 	res.locals.user = req.user;
+	
 	next();
 };
 
