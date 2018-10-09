@@ -44,6 +44,7 @@ exports = module.exports = function (app) {
 	app.all('/signout', routes.views.signout);
 	app.all('/forgotpassword', routes.views.forgotpassword);
     app.all('/resetpassword/:key', routes.views.resetpassword);
+    app.all('/search/', routes.views.search);
 	
 	
 

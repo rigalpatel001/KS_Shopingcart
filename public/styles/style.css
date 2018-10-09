@@ -82,3 +82,5 @@ div#footer p {text-align: center;font-size: 20px;font-weight: 700;}
 .navbar-default .navbar-nav > li > a {color: #337ab7;}
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {color: #337ab7;background-color: #e7e7e7;}
 div#flash-messages {margin-top: 20px;}
+.thumbnail a img {height: 200px;;}
+.mbr-section-title{font-weight: bold;margin: 30px 0;}
