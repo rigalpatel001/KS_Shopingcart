@@ -26,10 +26,22 @@ exports.initLocals = function (req, res, next) {
 					{ label: 'Contact', key: 'contact', href: '/contact' },
 					{ label: 'Products', key: 'products', href: '/products	' },
 	];
+
+
 	res.locals.cart = keystone.session.cart;			
 	res.locals.user = req.user;
+
+	//get top three category
+	keystone.list('Category').model.find().sort('name').limit(2).exec(function (err, results) {
+
+		if (err || !results.length) {
+			return next(err);
+		}
+		//res.locals.categories = "Hello";
+		res.locals.categories = results;
+	    next(); 
+	});
 	
-	next();
 };
 
 
