@@ -32,7 +32,7 @@ exports.initLocals = function (req, res, next) {
 	res.locals.user = req.user;
 
 	//get top three category
-	keystone.list('Category').model.find().sort('name').limit(2).exec(function (err, results) {
+	keystone.list('Category').model.find().sort('name').limit(3).exec(function (err, results) {
 
 		if (err || !results.length) {
 			return next(err);
