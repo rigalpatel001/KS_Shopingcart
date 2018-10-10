@@ -16,18 +16,3 @@ block content
 									h3.text-center: a(href='products/'+ cat.key)= cat.name
 		else	
 			h3.text-muted Categories Not Found.	
-	.container
-		h2.align-center.mbr-fonts-style.mbr-section-title.display-2 Top Products
-		.row.main.justify-content-center
-		if products.length
-			each product in products
-				.col-sm-6.col-md-4
-					.thumbnail
-						a(href='products/'+ product.slug): img.img-responsiv(src=product._.image.fit(200,200))
-						.caption
-							.row
-								.col-md-12.col-xs-6
-									h3.text-center: a(href='products/'+ product.slug)= product.name
-		else	
-			h3.text-muted Products Not Found.								
-	

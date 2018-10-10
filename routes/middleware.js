@@ -37,7 +37,6 @@ exports.initLocals = function (req, res, next) {
 		if (err || !results.length) {
 			return next(err);
 		}
-		//res.locals.categories = "Hello";
 		res.locals.categories = results;
 	    next(); 
 	});
