@@ -84,3 +84,88 @@ div#footer p {text-align: center;font-size: 20px;font-weight: 700;}
 div#flash-messages {margin-top: 20px;}
 .thumbnail a img {height: 200px;;}
 .mbr-section-title{font-weight: bold;margin: 30px 0;}
+.container-fluid.bannerimg { padding: 0;}
+.xt-single-course-header {
+  margin-bottom: 20px;
+  padding: 25px 20px;
+  border-radius: 3px;
+  background: #fff;
+  -webkit-box-shadow: 0px 0px 60px -6px rgba(10,10,10,.2);
+  -moz-box-shadow: 0px 0px 60px -6px rgba(10,10,10,.2);
+  -ms-box-shadow: 0px 0px 60px -6px rgba(10,10,10,.2);
+  -o-box-shadow: 0px 0px 60px -6px rgba(10,10,10,.2);
+  box-shadow: 0px 0px 60px -6px rgba(10,10,10,.2);
+  margin-top: 30px;
+}
+.course-summary .entry-title {
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 32px;
+  text-transform: none;
+  color: #337ab7;
+  font-size: 22px;
+}
+.course-summary .maintitle{ font-size: 32px;}
+.course-summary .course-meta {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+  margin-bottom: 35px;
+}
+.course-summary .course-meta > div {
+  flex-grow: 1;
+  line-height: 20px;
+  margin-right: 18px;
+  padding-right: 18px;
+  border-right: 1px solid #eee;
+  margin-bottom: 0;
+}
+.course-summary .course-meta > div.course-author img {
+  border-radius: 50%;
+  width: 40px;
+  height: auto;
+  float: left;
+  margin-right: 10px;
+}
+.course-summary .course-meta > div.course-author .author-contain {
+  display: inline-block;
+}
+.course-summary .course-meta label, .course-summary .lp-course-progress-heading {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  display: block;
+}
+.course-summary .course-meta .value, .course-summary .course-meta .value a, .single-lp_course .course-summary .learn-press-course-results-progress .number {
+  font-size: 14px;
+  line-height: 16px;
+  opacity: .9;
+  color: inherit;
+}
+.course-summary .course-payment .course-price {
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: 700;
+  color: inherit;
+  float: left;
+  margin-right: 20px;
+  display: inline-block;
+}
+.downloadfile{
+  font-size: 24px;
+  cursor: pointer;
+  color: red;
+}
+.quizewrap .quize_section{
+  list-style-type: none;
+}
+.quizewrap ul li p{
+ display: inline-block;
+ margin-left: 10px;
+}
+.quizewrap h4{
+  font-weight: bold;
+  color: #000;
+}
