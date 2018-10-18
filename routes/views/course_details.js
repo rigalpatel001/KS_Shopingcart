@@ -1,5 +1,6 @@
 var keystone = require('keystone');
 var async = require('async');
+var path = require('path');
 
 
 exports = module.exports = function (req, res) {
@@ -12,6 +13,7 @@ exports = module.exports = function (req, res) {
 	locals.filters = {
 		course: req.params.slug
 	};
+	locals.download = req.query.file;
 	locals.formData = req.body || {};
 	locals.data = {
 		courses: [],
@@ -52,6 +54,18 @@ exports = module.exports = function (req, res) {
 	// Load the Course
 	view.on('init', function (next) {
 		
+		if(locals.download){
+			res.download('./public/uploads/'+locals.download, locals.download, function(err){
+				if (err) {
+				    console.log('Error in downloading'+ err);
+				} else {
+				  // decrement a download credit, etc.
+				  console.log('Success..');
+				}
+			  });
+			  next();
+			 // res.end();
+		}
 		var q = keystone.list('Course').model.findOne({
 			slug:locals.filters.course
 		}).populate('questions');
@@ -59,6 +73,7 @@ exports = module.exports = function (req, res) {
 		
 		q.exec(function(err, result) {
 			locals.data.courses	 = result;
+			console.log(result);
 			next(err);
 		});
 	});

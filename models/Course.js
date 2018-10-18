@@ -9,9 +9,16 @@ var  Course = new keystone.List('Course', {
 var Storagepath = new keystone.Storage({
   adapter: keystone.Storage.Adapters.FS,
   fs: {
-    path: 'data/files',
-    publicPath: '/files',
+    path: keystone.expandPath('./public/uploads'),
+    publicPath: './public/uploads',
   },
+  schema: {
+    size: true,
+    mimetype: true,
+    path: true,
+    originalname: true,
+    url: true,
+    },
 });
 
 Course.add({

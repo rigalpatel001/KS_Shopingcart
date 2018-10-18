@@ -32,6 +32,7 @@ exports.initLocals = function (req, res, next) {
 
 	res.locals.cart = keystone.session.cart;			
 	res.locals.user = req.user;
+	res.locals.homeurl = req.headers.host;
 
 	//get top three category
 	keystone.list('Category').model.find().sort('name').limit(3).exec(function (err, results) {
@@ -44,7 +45,6 @@ exports.initLocals = function (req, res, next) {
 	});
 	
 };
-
 
 /**
 	Fetches and clears the flashMessages before a view is rendered

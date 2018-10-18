@@ -36,7 +36,7 @@ block content
 					p!= course.listofbenifits
 				.xt-module-into-summary.xt-single-course-header.clearfix
 					h1.course-title.entry-title(itemprop='name') Download of features and Benefits
-					a.glyphicon.glyphicon-save-file.downloadfile(href='' target='_blank') 
+					a.glyphicon.glyphicon-save-file.downloadfile(href= homeurl + '/uploads/'+course.benifitsFile.filename target='_blank') 
 				.xt-module-into-summary.xt-single-course-header.clearfix
 					h1.course-title.entry-title(itemprop='name') Quize
 					if course.questions.length
