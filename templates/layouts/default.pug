@@ -61,6 +61,7 @@ html
 							if user
 								if user.canAccessKeystone
 									li: a(href='/keystone') Open Keystone
+								li: a(href='/profile/'+ user.username) Profile
 								li: a(href='/signout')= `Hi, ${user.username} Sign Out`
 							else
 								li: a(href='/signin') Sign In

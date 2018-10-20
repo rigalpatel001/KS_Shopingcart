@@ -2,12 +2,12 @@ var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
 var  Question = new keystone.List('Question',{
-  autokey: { path: 'slug', from: 'title', unique: true }
+  autokey: { path: 'slug', from: 'name', unique: true }
  
 });
 
 Question.add({
-  title: { type: String, required: true, initial: true},
+  name: { type: String, required: true, initial: true,label:'Title'},
   answer1: { type: String, required: true,initial: true,label:'Answer 1'},
   answer2: { type: String, required: true,initial: true,label:'Answer 2'},
   answer3: { type: String, required: true,initial: true,label:'Answer 3'},
@@ -19,6 +19,6 @@ Question.schema.virtual('canAccessKeystone').get(function () {
   return true;
 });
 
-Question.defaultColumns = 'title,correctanswer';
+Question.defaultColumns = 'name,correctanswer';
 
 Question.register();

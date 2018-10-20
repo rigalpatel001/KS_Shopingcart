@@ -47,6 +47,7 @@ exports = module.exports = function (app) {
 	app.all('/search/', routes.views.search);
 	app.all('/courses/', routes.views.courses);
 	app.all('/courses/:slug', routes.views.course_details);
+	app.all('/profile/:user', middleware.requireUser,routes.views.userprofile);
 	
 	
 
