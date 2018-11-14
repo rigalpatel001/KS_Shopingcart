@@ -1,6 +1,9 @@
 {
   "name": "keystone_cart",
   "version": "0.0.0",
+  "engines": {
+    "node": "10.9.0"
+  },
   "private": true,
   "dependencies": {
     "async": "2.1.4",
