@@ -57,7 +57,7 @@ view.on('init', function (next) {
 
 	// Load the Products
 	view.on('init', function (next) {
-
+		
         var q = keystone.list('Product').paginate({
 			page: req.query.page || 1,
 			perPage: 8,
@@ -72,7 +72,7 @@ view.on('init', function (next) {
 			locals.data.products = results;
 			next(err);
 		});
-
+		
 	});
 	// Render the view
 	view.render('products');

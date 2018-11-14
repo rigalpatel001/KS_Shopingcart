@@ -10,6 +10,8 @@
 var keystone = require('keystone');
 var _ = require('lodash');
 var async = require('async');
+var request = require('request');
+
 
 
 /**
@@ -29,6 +31,7 @@ exports.initLocals = function (req, res, next) {
 					
 	];
 
+	
 
 	res.locals.cart = keystone.session.cart;			
 	res.locals.user = req.user;
@@ -65,6 +68,7 @@ exports.flashMessages = function (req, res, next) {
 	Prevents people from accessing protected pages when they're not signed in
  */
 exports.requireUser = function (req, res, next) {
+	console.log('User reqquest');
 	if (!req.user) {
 		req.flash('error', 'Please sign in to access this page.');
 		res.redirect('/signin');
@@ -72,3 +76,40 @@ exports.requireUser = function (req, res, next) {
 		next();
 	}
 };
+
+/**
+ *  Get Access Token suitecrm
+ */
+
+exports.login = function (callback) {
+		
+	var form = {
+		"grant_type":"password",
+	//local	"client_id":"a9204c23-30eb-ff31-6e84-5bd003206e6b",
+		"client_id":"440781ee-dcfe-8c85-b289-5bec0149efba",
+		"client_secret":"rigal",
+		"username": "admin",
+	//local	"password": "admin@123",
+		"password": "scrm_2018!",
+		"scope": ""
+	}   
+	var formData = JSON.stringify(form);
+	request({
+			headers: {
+				'Accept': 'application/vnd.api+json',
+				'Content-Type': 'application/vnd.api+json'
+			},
+				uri: 'http://localhost:8888/SuiteCRM/api/oauth/access_token',
+				body: formData,
+				method: 'POST'
+			}, function (err, res, body) {
+			//it works!
+				if (!err) {
+						var sessionID = JSON.parse(body).access_token;
+						callback(sessionID);
+					} else {
+						//response.end(error);
+						console.log(err);
+					}
+		});
+}
