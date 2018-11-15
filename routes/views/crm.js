@@ -134,7 +134,8 @@ var formData = JSON.stringify(form);
 				"attributes": {
 					"first_name": req.body.first_name,
 					"last_name": req.body.last_name,
-					"phone_work": req.body.phone_work
+					"phone_work": req.body.phone_work,
+					"email1": req.body.email1
 				}
 			  }
 		   };
@@ -152,11 +153,11 @@ var formData = JSON.stringify(form);
 						uri: 'http://midasflow.net.au/api/v8/modules/Contacts',
 						method: 'POST',
 						body: formData
-					}, function (err, res, body) {
+					}, function (err, response, body) {
 					    if (!err) {
 							 req.flash('success', 'User Successfully added...');
-							// res.redirect('back');
-							 next();
+							 return res.redirect('/crm');
+							 //next();
 						} else {
 						      console.log(err);
 						}
@@ -172,7 +173,7 @@ var formData = JSON.stringify(form);
 	view.on('init', function (next) {
 		middleware.login(function(sugarid){
 			if (sugarid != 'undefined') {
-				console.log(sugarid);
+				//console.log(sugarid);
 				request({
 					headers: {
 						'Accept': 'application/vnd.api+json',
@@ -211,12 +212,12 @@ switch (locals.data.action) {
 						'Content-Type': 'application/vnd.api+json',
 						'Authorization': 'Bearer ' + sugarid
 					},
-						uri: 'http://localhost:8888/SuiteCRM/api/v8/modules/Contacts/'+locals.data.id,
+						uri: 'http://midasflow.net.au/api/v8/modules/Contacts/'+locals.data.id,
 						method: 'DELETE'
-					}, function (err, res, body) {
+					}, function (err, response, body) {
 					    if (!err) {
 							 req.flash('success', 'User Successfully Deleted...');
-							 view.render('crm');
+							 return res.redirect('/crm');
 							 //next();
 						} else {
 						      console.log(err);
