@@ -148,7 +148,8 @@ var formData = JSON.stringify(form);
 						'Content-Type': 'application/vnd.api+json',
 						'Authorization': 'Bearer ' + sugarid
 					},
-						uri: 'http://localhost:8888/SuiteCRM/api/v8/modules/Contacts',
+					//local	uri: 'http://localhost:8888/SuiteCRM/api/v8/modules/Contacts',
+						uri: 'http://midasflow.net.au/api/v8/modules/Contacts',
 						method: 'POST',
 						body: formData
 					}, function (err, res, body) {
@@ -171,14 +172,14 @@ var formData = JSON.stringify(form);
 	view.on('init', function (next) {
 		middleware.login(function(sugarid){
 			if (sugarid != 'undefined') {
-				//console.log(sugarid);
+				console.log(sugarid);
 				request({
 					headers: {
 						'Accept': 'application/vnd.api+json',
 						'Content-Type': 'application/vnd.api+json',
 						'Authorization': 'Bearer ' + sugarid
 					},
-						uri: 'http://localhost:8888/SuiteCRM/api/v8/modules/Contacts',
+						uri: 'http://midasflow.net.au/api/v8/modules/Contacts',
 						method: 'GET'
 					}, function (err, res, body) {
 					//it works!

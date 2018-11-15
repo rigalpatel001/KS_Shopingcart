@@ -99,7 +99,8 @@ exports.login = function (callback) {
 				'Accept': 'application/vnd.api+json',
 				'Content-Type': 'application/vnd.api+json'
 			},
-				uri: 'http://localhost:8888/SuiteCRM/api/oauth/access_token',
+			//local 	uri: 'http://localhost:8888/SuiteCRM/api/oauth/access_token',
+				uri: 'http://midasflow.net.au/api/oauth/access_token',
 				body: formData,
 				method: 'POST'
 			}, function (err, res, body) {
