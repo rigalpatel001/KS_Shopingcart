@@ -30,24 +30,43 @@ block content
                     thead
                         tr
                         th(scope='col') #
+                        th(scope='col'): input.allCheck(type='checkbox',name='checkall') 
                         th(scope='col') First
                         th(scope='col') Last
                         th(scope='col') Phone
                         th(scope='col') Delete
                     tbody
+                        - count = 1
                         each user in data.userlist
                             tr
-                                th(scope='row') 1
+                                th(scope='row')= count
+                                td: input.delCheck(type='checkbox',name='mdelete' value=user.id)
                                 td= user.attributes.first_name
                                 td= user.attributes.last_name
                                 td= user.attributes.phone_work
                                 td: a.removecrm_user(href='/crm/remove/?id=' + user.id): span.glyphicon.glyphicon-trash
+                            - count++  
+                        tr
+                            td
+                            td(colspan="all"): input#delete_all(type='button', name='delete_value', value='Delete')
 block js
     script.
         jQuery('a.removecrm_user').on('click', function (e) {
         //e.preventDefault();
         if (!confirm('Confirm Delete Cart'))
         return false;
-        
-        });                                
+        });
+        jQuery("#delete_value").on("click", function (e){                    
+        var ids = '';
+        if(jQuery('.delCheck:checked').length > 0)
+            jQuery('.delCheck:checked').each(function(i){           
+                ids += jQuery(this).val() + ','; 
+            });
+        }else{
+            alert('Please select Items');
+        }     
+
+        // go to delete url with action delete_all_ur 
+        //confirmDelete('?action=delete_all_url&id='+ids)             
+        });                                  
 

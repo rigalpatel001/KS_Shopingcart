@@ -180,12 +180,14 @@ var formData = JSON.stringify(form);
 						'Content-Type': 'application/vnd.api+json',
 						'Authorization': 'Bearer ' + sugarid
 					},
-						uri: 'http://midasflow.net.au/api/v8/modules/Contacts',
+						uri: 'http://midasflow.net.au/api/v8/modules/Contacts?page[number]=3&page[size]=1&page[limit]=100',
 						method: 'GET'
 					}, function (err, res, body) {
 					//it works!
 						if (!err) {
+							
 							 var results = JSON.parse(body).data;
+							 console.log(results);
 						     locals.data.userlist = results;
 							 next();
 							} else {
@@ -212,7 +214,7 @@ switch (locals.data.action) {
 						'Content-Type': 'application/vnd.api+json',
 						'Authorization': 'Bearer ' + sugarid
 					},
-						uri: 'http://midasflow.net.au/api/v8/modules/Contacts/'+locals.data.id,
+						uri: 'http://midasflow.net.au/api/v8/modules/Contacts/c61a17a2-b3bf-ad2b-b2e9-5becf2c4b1cc,892928d8-e07d-5bba-e494-5bed12254168',
 						method: 'DELETE'
 					}, function (err, response, body) {
 					    if (!err) {
